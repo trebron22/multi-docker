@@ -10,7 +10,7 @@ script:
   - docker run gagyinorbert/react-test npm test -- -- coverage
 
 after_success:
-  - docker build-t gagyinorbert/multi-client ./client
+  - docker build -t gagyinorbert/multi-client ./client
   - docker build -t gagyinorbert/multi-nginx ./nginx
   - docker build -t gagyinorbert/multi-server ./server
   - docker build -t gagyinorbert/multi-worker ./worker
@@ -26,7 +26,7 @@ deploy:
   provider: elasticbeanstalk
   region: us-east-2
   app: multi-docker
-  env: MultiDocker-env
+  env: MultiDocker-env-1
   bucket_name: elasticbeanstalk-us-east-2-640765075742
   bucket_path: docker-multi
   on:
